@@ -61,12 +61,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
                 ),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                //forgot password screen
-              },
-              child: const Text('Forgot Password',),
-            ),
+
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -78,13 +73,19 @@ class _OpeningScreenState extends State<OpeningScreen> {
                   },
                 )
             ),
+            TextButton(
+              onPressed: () {
+                //forgot password screen
+              },
+              child: const Text('Forgot Password',),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text('Don\'t  have account?'),
+                const Text('Don\'t  have an account?'),
                 TextButton(
                   child: const Text(
-                    'Sign Up',
+                    'Register Now',
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
