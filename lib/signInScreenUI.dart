@@ -4,22 +4,18 @@
 // Imports the necessary packages for the app to run
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/signUpScreenUI.dart';
-import 'homePageNavBar.dart';
+import 'package:idk_what_to_eat_test/homePageNavBar.dart';
 
 class OpeningScreen extends StatefulWidget {
   const OpeningScreen({Key? key}) : super(key: key);
 
   @override
-  // Sets the opening screen state to the OpeningScreenState class
   State<OpeningScreen> createState() => _OpeningScreenState();
 }
 
 class _OpeningScreenState extends State<OpeningScreen> {
-  // Creates two controllers, one for name and one for password
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
-  // The BuildContext builds what the sign in page will look like
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,7 +26,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
                 child: const Text(
-                  '...',
+                  'Welcome!',
                   style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.w500,
@@ -40,11 +36,9 @@ class _OpeningScreenState extends State<OpeningScreen> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
                 child: const Text(
-                  'Sign in',
+                  'Sign In',
                   style: TextStyle(fontSize: 20),
                 )),
-
-            // Creates container for username
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
@@ -54,9 +48,8 @@ class _OpeningScreenState extends State<OpeningScreen> {
                   labelText: 'User Name',
                 ),
               ),
-            ),
 
-            // Creates container for password
+            ),
             Container(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: TextField(
@@ -68,8 +61,6 @@ class _OpeningScreenState extends State<OpeningScreen> {
                 ),
               ),
             ),
-
-            // Creates container for forgot password
             TextButton(
               onPressed: () {
                 //forgot password screen
@@ -88,27 +79,25 @@ class _OpeningScreenState extends State<OpeningScreen> {
                 )
             ),
             Row(
-              // Creates button to go to sign up page
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text('Does not have account?'),
+                const Text('Don\'t  have account?'),
                 TextButton(
                   child: const Text(
-                    'Sign up',
+                    'Sign Up',
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return const signUpScreenUI(title: 'Sign Up Screen');
+                      return const signUpScreenUI(title: 'Sign Up!');
                     }));
                     //signup screen
                   },
                 )
               ],
-              mainAxisAlignment: MainAxisAlignment.center,
             ),
-
-            // Creates option to skip signing in (this may be removed in the final app version, TBD)
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextButton(
                   child: const Text(
@@ -122,7 +111,6 @@ class _OpeningScreenState extends State<OpeningScreen> {
                   },
                 )
               ],
-              mainAxisAlignment: MainAxisAlignment.center,
             ),
           ],
         ));

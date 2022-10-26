@@ -12,9 +12,8 @@ class BasicBottomNavBar extends StatefulWidget {
 }
 
 class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
-  int _selectedIndex = 0; // the button on the navigation bar that is selected (0 is for home)
+  int _selectedIndex = 0;
 
-  // This section creates all the icons for the navigation bar and their sizes
   static const List<Widget> _pages = <Widget>[
     Icon(
       Icons.house,
@@ -42,26 +41,22 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
     // ),
   ];
 
-  // This section changes the selectedIndex value based on what button on the navigation bar has been hit
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  // The BuildContext builds what the navigation bar will look like
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // This sets up the title of the BottomNavigationBar
-        title: const Text('BottomNavigationBar Demo'),
+        title: const Text('BottomNavigationBar'),
       ),
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        // This creates the icons, color, and label of all the navigation bar buttons
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

@@ -15,15 +15,20 @@ class signUpScreenUI extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<signUpScreenUI> {
-  // Creates two controllers, one for name and one for password
-  TextEditingController nameController = TextEditingController();
+  // Creates controllers, one for username, password, first name, last name, and email
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   // The BuildContext builds what the sign in page will look like
   @override
+
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(10),
+    return Scaffold(
+      body: Hero(
+        tag: const EdgeInsets.all(10),
         child: ListView(
           children: <Widget>[
             Container(
@@ -40,7 +45,7 @@ class _SignUpScreenState extends State<signUpScreenUI> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
                 child: const Text(
-                  'Sign in',
+                  'Sign up',
                   style: TextStyle(fontSize: 20),
                 )),
 
@@ -48,7 +53,7 @@ class _SignUpScreenState extends State<signUpScreenUI> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                controller: nameController,
+                controller: userNameController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'User Name',
@@ -69,26 +74,62 @@ class _SignUpScreenState extends State<signUpScreenUI> {
               ),
             ),
 
-            // Creates container for forgot password
-            TextButton(
-              onPressed: () {
-                //forgot password screen
-              },
-              child: const Text('Get Rid Of',),
+            // Creates container for first name
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: firstNameController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'First Name',
+                ),
+              ),
             ),
+
+            // Creates container for last name
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: lastNameController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Last Name',
+                ),
+              ),
+            ),
+
+            // Creates container for email
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Email',
+                ),
+              ),
+            ),
+
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: ElevatedButton(
                   child: const Text('Sign Up'),
                   onPressed: () {
-                    print(nameController.text);
+                    print(userNameController.text);
                     print(passwordController.text);
+                    print(firstNameController.text);
+                    print(lastNameController.text);
+                    print(emailController.text);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return const BasicBottomNavBar(title: 'BasicBottomNavBar');
+                    }));
                   },
                 )
             ),
             // Creates option to skip signing in (this may be removed in the final app version, TBD)
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextButton(
                   child: const Text(
@@ -102,9 +143,8 @@ class _SignUpScreenState extends State<signUpScreenUI> {
                   },
                 )
               ],
-              mainAxisAlignment: MainAxisAlignment.center,
             ),
           ],
-        ));
+        )));
   }
 }
