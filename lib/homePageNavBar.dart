@@ -3,6 +3,7 @@
 
 // Imports the necessary packages for the app to run
 import 'package:flutter/material.dart';
+import 'uploadScreen.dart';
 
 class BasicBottomNavBar extends StatefulWidget {
   const BasicBottomNavBar({Key? key, required this.title}) : super(key: key);
@@ -27,18 +28,11 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
       Icons.article_outlined,
       size: 150,
     ),
-    Icon(
-      Icons.add_a_photo,
-      size: 150,
-    ),
+    uploadScreen(),
     Icon(
       Icons.account_circle,
       size: 150,
     ),
-    // Icon(
-    //   Icons.chat,
-    //   size: 150,
-    // ),
   ];
 
   void _onItemTapped(int index) {

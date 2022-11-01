@@ -62,6 +62,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
               ),
             ),
 
+            const SizedBox(height: 20.0),
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
