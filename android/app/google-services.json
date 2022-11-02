@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "768837174862",
+    "project_id": "idk-what-to-eat-5d9b5",
+    "storage_bucket": "idk-what-to-eat-5d9b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768837174862:android:e8628cdf19c852bdbba51f",
+        "android_client_info": {
+          "package_name": "com.example.idk_what_to_eat_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768837174862-r6l76qa8l52sf63tqoc1l78lkld0c0pd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOtQG3gzVW6A-2AR04UbM2mDig4h0AfrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768837174862-r6l76qa8l52sf63tqoc1l78lkld0c0pd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

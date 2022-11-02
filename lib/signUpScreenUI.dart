@@ -3,6 +3,7 @@
 
 // Imports the necessary packages for the app to run
 import 'package:flutter/material.dart';
+import 'package:idk_what_to_eat_test/authentic.dart';
 import 'homePageNavBar.dart';
 
 class signUpScreenUI extends StatefulWidget {
@@ -15,6 +16,10 @@ class signUpScreenUI extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<signUpScreenUI> {
+  final AuthService _auth = AuthService();
+  String email = "";
+  String password = "";
+
   // Creates controllers, one for username, password, first name, last name, and email
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -27,6 +32,9 @@ class _SignUpScreenState extends State<signUpScreenUI> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: const Text('Sign In'),
+        ),
       body: Hero(
         tag: const EdgeInsets.all(10),
         child: ListView(
@@ -115,15 +123,22 @@ class _SignUpScreenState extends State<signUpScreenUI> {
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: ElevatedButton(
                   child: const Text('Sign Up'),
-                  onPressed: () {
-                    print(userNameController.text);
-                    print(passwordController.text);
-                    print(firstNameController.text);
-                    print(lastNameController.text);
-                    print(emailController.text);
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return const BasicBottomNavBar(title: 'BasicBottomNavBar');
-                    }));
+                  onPressed: () async {
+                    email = emailController.text;
+                    password = passwordController.text;
+                    dynamic result = await _auth.registerUser(email.trim(), password);
+                    if (result == null){
+                      print(email);
+                      print('error registering');
+                    }
+                    else {
+                      if (!mounted) return;
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) {
+                        return const BasicBottomNavBar(
+                            title: 'BasicBottomNavBar');
+                      }));
+                    }
                   },
                 )
             ),

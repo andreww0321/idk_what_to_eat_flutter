@@ -3,6 +3,7 @@
 
 // Imports the necessary packages for the app to run
 import 'package:flutter/material.dart';
+import 'package:idk_what_to_eat_test/authentic.dart';
 import 'package:idk_what_to_eat_test/signUpScreenUI.dart';
 import 'package:idk_what_to_eat_test/homePageNavBar.dart';
 
@@ -14,7 +15,10 @@ class OpeningScreen extends StatefulWidget {
 }
 
 class _OpeningScreenState extends State<OpeningScreen> {
-  TextEditingController nameController = TextEditingController();
+  final AuthService _auth = AuthService();
+  String email ="";
+  String password = "";
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -42,10 +46,10 @@ class _OpeningScreenState extends State<OpeningScreen> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                controller: nameController,
+                controller: emailController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'User Name',
+                  labelText: 'Email',
                 ),
               ),
 
@@ -68,12 +72,26 @@ class _OpeningScreenState extends State<OpeningScreen> {
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: ElevatedButton(
                   child: const Text('Login'),
-                  onPressed: () {
-                    print(nameController.text);
-                    print(passwordController.text);
+                  onPressed: () async {
+                    email = emailController.text;
+                    password = passwordController.text;
+                    dynamic result = await _auth.signIn(email, password);
+                    if (result==null){
+                      print('error signing in');
+                    }
+                    else {
+                      print('signed in with email');
+                      if(!mounted) return;
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) {
+                        return const BasicBottomNavBar(
+                            title: 'BasicBottomNavBar');
+                      }));
+                    }
                   },
-                )
+                ),
             ),
+
             TextButton(
               onPressed: () {
                 //forgot password screen
@@ -106,10 +124,20 @@ class _OpeningScreenState extends State<OpeningScreen> {
                     'Skip For Now ->',
                     style: TextStyle(fontSize: 20),
                   ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return const BasicBottomNavBar(title: 'BasicBottomNavBar');
-                    }));
+                  onPressed: () async {
+                    // get result from sign in anon
+                    dynamic result = await _auth.signInAnon();
+                    if (result==null){
+                      print('error signing in');
+                    }
+                    else {
+                      print('signed in anon');
+                      if (!mounted) return;
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return const BasicBottomNavBar(
+                            title: 'BasicBottomNavBar');
+                      }));
+                    }
                   },
                 )
               ],
@@ -117,4 +145,5 @@ class _OpeningScreenState extends State<OpeningScreen> {
           ],
         ));
   }
+
 }
