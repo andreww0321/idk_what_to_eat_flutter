@@ -3,6 +3,7 @@
 
 // Imports the necessary packages for the app to run
 import 'package:flutter/material.dart';
+import 'package:idk_what_to_eat_test/profile.dart';
 import 'uploadScreen.dart';
 
 class BasicBottomNavBar extends StatefulWidget {
@@ -29,10 +30,7 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
       size: 150,
     ),
     uploadScreen(),
-    Icon(
-      Icons.account_circle,
-      size: 150,
-    ),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {

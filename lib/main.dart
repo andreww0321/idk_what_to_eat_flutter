@@ -2,6 +2,8 @@
 //Description: Calls other classes to create app
 
 // Imports the necessary packages for the app to run
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/signInScreenUI.dart';
 import 'package:firebase_core/firebase_core.dart';
