@@ -5,6 +5,9 @@
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/authentic.dart';
 import 'homePageNavBar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final usersRef = FirebaseFirestore.instance.collection('users');
 
 class signUpScreenUI extends StatefulWidget {
   const signUpScreenUI({Key? key, required this.title}) : super(key: key);
@@ -29,6 +32,16 @@ class _SignUpScreenState extends State<signUpScreenUI> {
 
   // The BuildContext builds what the sign in page will look like
   @override
+
+  createUser()async{
+    usersRef.add({
+      'username' : userNameController.text,
+      'password' : passwordController.text,
+      'first name' : firstNameController.text,
+      'last name' : lastNameController.text,
+      'email' : emailController.text,
+    });
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,11 +141,12 @@ class _SignUpScreenState extends State<signUpScreenUI> {
                     password = passwordController.text;
                     dynamic result = await _auth.registerUser(email.trim(), password);
                     if (result == null){
-                      print(email);
-                      print('error registering');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Error registering")));
                     }
                     else {
                       if (!mounted) return;
+                      createUser();
                       Navigator.push(
                           context, MaterialPageRoute(builder: (context) {
                         return const BasicBottomNavBar(

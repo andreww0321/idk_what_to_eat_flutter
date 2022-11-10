@@ -40,6 +40,8 @@ dependencies:
   cloud_firestore: ^4.0.3
   firebase_core: ^2.1.1
   firebase_auth_platform_interface: ^6.11.0
+  file_picker: ^5.2.2
+  firebase_storage: ^11.0.4
 
 dev_dependencies:
   flutter_test:

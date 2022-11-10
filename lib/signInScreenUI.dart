@@ -77,7 +77,8 @@ class _OpeningScreenState extends State<OpeningScreen> {
                     password = passwordController.text;
                     dynamic result = await _auth.signIn(email, password);
                     if (result==null){
-                      print('error signing in');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Invalid Login Credentials")));
                     }
                     else {
                       print('signed in with email');

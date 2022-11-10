@@ -2,6 +2,8 @@
 //Description: Creates what the bottom navigation bar looks like
 
 // Imports the necessary packages for the app to run
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/profile.dart';
 import 'uploadScreen.dart';
@@ -18,7 +20,7 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
 
   static const List<Widget> _pages = <Widget>[
     Icon(
-      Icons.house,
+      Icons.home,
       size: 150,
     ),
     Icon(
@@ -43,7 +45,7 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BottomNavigationBar'),
+        title: const Text('Sign out'),
       ),
       body: Center(
         child: _pages.elementAt(_selectedIndex),
