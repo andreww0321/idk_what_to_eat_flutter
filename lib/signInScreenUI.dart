@@ -28,10 +28,10 @@ class _OpeningScreenState extends State<OpeningScreen> {
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView(
+    return Scaffold(
+        body: Column(
           children: <Widget>[
+            const SizedBox(height: 40.0),
             Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
