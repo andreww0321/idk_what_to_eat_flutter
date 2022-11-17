@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:idk_what_to_eat_test/photoStorage.dart';
+import 'package:idk_what_to_eat_test/myUser.dart';
+import 'package:image_picker/image_picker.dart';
 
 class uploadScreen extends StatefulWidget {
-  const uploadScreen({Key? key}) : super(key: key);
+  const uploadScreen({Key? key});
 
   @override
   State<uploadScreen> createState() => _uploadScreenState();
@@ -16,7 +18,6 @@ class _uploadScreenState extends State<uploadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final photoStorage storage = photoStorage();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -29,18 +30,14 @@ class _uploadScreenState extends State<uploadScreen> {
               child: Center(
                 child: ElevatedButton(
                   onPressed: () async {
-                    final results = await FilePicker.platform.pickFiles(
-                      allowMultiple: false,
-                      type: FileType.image,
-                    );
+                    File results = (await ImagePicker().pickImage(source: ImageSource.gallery,
+                    maxHeight: 675,
+                    maxWidth: 960)) as File;
                     if (results==null){
                       ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text("No file selected")));
                       return null;
                     }
-                    final path = results.files.single.path!;
-                    final fileName = results.files.single.name;
-                    storage.uploadFile(fileName, path).then((value) => print("Done"));
                   },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blueAccent,
@@ -96,7 +93,8 @@ class _uploadScreenState extends State<uploadScreen> {
             ),
             const SizedBox(height: 500.0),
             GestureDetector(
-              onTap: () {},
+              onTap: () {handleSubmit();
+              },
               child: Container(
                 color: Colors.blueAccent,
                 width: 165.0,
@@ -116,6 +114,9 @@ class _uploadScreenState extends State<uploadScreen> {
         ),
       ),
     );
+  }
+  handleSubmit(){
+
   }
 }
 

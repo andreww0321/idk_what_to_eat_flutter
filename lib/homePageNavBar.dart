@@ -6,6 +6,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/profile.dart';
+import 'package:idk_what_to_eat_test/CurrentUser.dart';
 import 'uploadScreen.dart';
 
 class BasicBottomNavBar extends StatefulWidget {

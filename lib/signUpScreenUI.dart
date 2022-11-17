@@ -2,12 +2,15 @@
 //Description: Creates what the sign in screen looks like
 
 // Imports the necessary packages for the app to run
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/authentic.dart';
 import 'homePageNavBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:idk_what_to_eat_test/signInScreenUI.dart';
 
 final usersRef = FirebaseFirestore.instance.collection('users');
+
 
 class signUpScreenUI extends StatefulWidget {
   const signUpScreenUI({Key? key, required this.title}) : super(key: key);
@@ -33,14 +36,17 @@ class _SignUpScreenState extends State<signUpScreenUI> {
   // The BuildContext builds what the sign in page will look like
   @override
 
-  createUser()async{
-    usersRef.add({
-      'username' : userNameController.text,
-      'password' : passwordController.text,
-      'first name' : firstNameController.text,
-      'last name' : lastNameController.text,
-      'email' : emailController.text,
-    });
+  createUser()async {
+    final User? user = FirebaseAuth.instance.currentUser;
+      usersRef.doc(user?.uid).set({
+        'username': userNameController.text,
+        'password': passwordController.text,
+        'first name': firstNameController.text,
+        'last name': lastNameController.text,
+        'email': emailController.text,
+        'id': user?.uid,
+        'bio': "",
+      });
   }
 
   Widget build(BuildContext context) {
@@ -149,29 +155,11 @@ class _SignUpScreenState extends State<signUpScreenUI> {
                       createUser();
                       Navigator.push(
                           context, MaterialPageRoute(builder: (context) {
-                        return const BasicBottomNavBar(
-                            title: 'BasicBottomNavBar');
+                        return const OpeningScreen();
                       }));
                     }
                   },
                 )
-            ),
-            // Creates option to skip signing in (this may be removed in the final app version, TBD)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextButton(
-                  child: const Text(
-                    'Skip For Now ->',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return const BasicBottomNavBar(title: 'BasicBottomNavBar');
-                    }));
-                  },
-                )
-              ],
             ),
           ],
         )));

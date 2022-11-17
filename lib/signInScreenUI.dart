@@ -2,10 +2,16 @@
 //Description: Creates what the sign in screen looks like
 
 // Imports the necessary packages for the app to run
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:idk_what_to_eat_test/CurrentUser.dart';
 import 'package:idk_what_to_eat_test/authentic.dart';
+import 'package:idk_what_to_eat_test/myUser.dart';
 import 'package:idk_what_to_eat_test/signUpScreenUI.dart';
 import 'package:idk_what_to_eat_test/homePageNavBar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final userRef = FirebaseFirestore.instance.collection('users');
 
 class OpeningScreen extends StatefulWidget {
   const OpeningScreen({Key? key}) : super(key: key);
@@ -81,13 +87,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
                           const SnackBar(content: Text("Invalid Login Credentials")));
                     }
                     else {
-                      print('signed in with email');
-                      if(!mounted) return;
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (context) {
-                        return const BasicBottomNavBar(
-                            title: 'BasicBottomNavBar');
-                      }));
+                      createUserInFirestore();
                     }
                   },
                 ),
@@ -117,34 +117,38 @@ class _OpeningScreenState extends State<OpeningScreen> {
                 )
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextButton(
-                  child: const Text(
-                    'Skip For Now ->',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () async {
-                    // get result from sign in anon
-                    dynamic result = await _auth.signInAnon();
-                    if (result==null){
-                      print('error signing in');
-                    }
-                    else {
-                      print('signed in anon');
-                      if (!mounted) return;
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return const BasicBottomNavBar(
-                            title: 'BasicBottomNavBar');
-                      }));
-                    }
-                  },
-                )
-              ],
-            ),
           ],
         ));
+  }
+
+  createUserInFirestore() async {
+    final User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      DocumentSnapshot doc = await usersRef.doc(user.uid).get();
+      if (!doc.exists){
+        doc = await usersRef.doc(user.uid).get();
+        var currentUser = CurrentUser.fromDocument(doc);
+        print(currentUser.username);
+      }
+      else{
+        var currentUser = CurrentUser.fromDocument(doc);
+        print(currentUser.username);
+        print('signed in with email');
+        if(!mounted) return;
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) {
+          return BasicBottomNavBar(
+              title: 'BasicBottomNavBar');
+        }));
+      }
+      // User is signed in
+    } else {
+      print("No user");
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return const signUpScreenUI(title: 'Sign Up!');
+      }));
+      // No user is signed in
+    }
   }
 
 }
