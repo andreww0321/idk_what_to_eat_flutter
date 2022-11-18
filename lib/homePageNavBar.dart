@@ -2,11 +2,7 @@
 //Description: Creates what the bottom navigation bar looks like
 
 // Imports the necessary packages for the app to run
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:idk_what_to_eat_test/profile.dart';
-import 'package:idk_what_to_eat_test/CurrentUser.dart';
 import 'uploadScreen.dart';
 
 class BasicBottomNavBar extends StatefulWidget {
@@ -21,13 +17,14 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
 
   static const List<Widget> _pages = <Widget>[
     Icon(
-      Icons.home,
+      Icons.house,
       size: 150,
     ),
     Icon(
       Icons.question_mark,
       size: 150,
     ),
+    cravingsScreen(),
     Icon(
       Icons.article_outlined,
       size: 150,
