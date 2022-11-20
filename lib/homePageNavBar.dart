@@ -3,6 +3,8 @@
 
 // Imports the necessary packages for the app to run
 import 'package:flutter/material.dart';
+import 'package:idk_what_to_eat_test/profile.dart';
+import 'package:idk_what_to_eat_test/randomPage.dart';
 import 'uploadScreen.dart';
 
 class BasicBottomNavBar extends StatefulWidget {
@@ -20,17 +22,24 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
       Icons.house,
       size: 150,
     ),
+    randomPage(),
+    //-----
     Icon(
-      Icons.question_mark,
+      Icons.crop_square,
       size: 150,
     ),
-    cravingsScreen(),
-    Icon(
-      Icons.article_outlined,
-      size: 150,
-    ),
+    //cravingsScreen(),
+    //-------
     uploadScreen(),
+    //-----
+    /*Icon(
+      Icons.person_outline_rounded,
+      size: 150,
+    ),
+
+     */
     Profile(),
+    //-------
   ];
 
   void _onItemTapped(int index) {
