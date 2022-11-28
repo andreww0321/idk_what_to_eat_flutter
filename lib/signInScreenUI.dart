@@ -133,6 +133,8 @@ class _OpeningScreenState extends State<OpeningScreen> {
       else{
         var currentUser = CurrentUser.fromDocument(doc);
         print(currentUser.username);
+        print(currentUser.firstName);
+        print(currentUser.lastName);
         print('signed in with email');
         if(!mounted) return;
         Navigator.push(
