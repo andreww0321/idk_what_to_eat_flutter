@@ -21,10 +21,11 @@ class DynamicallyCheckboxState extends State{
         "Lunch" : false,
         "Dinner" : false,
         "Drinks" : false,
-        r"$" : false,
-        r"$$" : false,
-        r"$$$" : false,
-        r"$$$$" : false,
+        r"*" : false,
+        r"**" : false,
+        r"***" : false,
+        r"****" : false,
+        r"*****" : false,
     };
     var holder1 = [];
 
