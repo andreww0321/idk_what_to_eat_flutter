@@ -1,12 +1,13 @@
+//Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+//Description: Creates what the cravings screen will look like
+
+
 import 'package:flutter/material.dart';
 
 class cravingsScreen extends StatefulWidget {
     const cravingsScreen ({Key? key}) : super(key: key);
-
-  //  class DynamicallyCheckbox extends StatefulWidget{
     @override
     DynamicallyCheckboxState createState() => DynamicallyCheckboxState();
-   // }
 }
 
 class DynamicallyCheckboxState extends State{
@@ -26,28 +27,16 @@ class DynamicallyCheckboxState extends State{
         r"***" : false,
         r"****" : false,
         r"*****" : false,
+        "Check to find your restaurant!" : false,
     };
     var holder1 = [];
 
-    removeAllChecked(){
-        List.forEach((key, value) {
-            if(value == true)
-                {
-                    holder1.add(key);
-                }
-        });
-        holder1.forEach((element) {
-            setState((){
-                List.remove(element);
-            });
-        });
-    }
 
     @override
         Widget build(BuildContext context){
         return Column(children: <Widget>[
             ElevatedButton(
-                onPressed: removeAllChecked(),
+                onPressed: null,
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.pink,
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
