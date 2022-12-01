@@ -4,6 +4,7 @@
 // Imports the necessary packages for the app to run
 
 import 'package:flutter/material.dart';
+import 'package:idk_what_to_eat_test/cravingsScreen.dart';
 import 'package:idk_what_to_eat_test/profile.dart';
 import 'package:idk_what_to_eat_test/CurrentUser.dart';
 import 'package:idk_what_to_eat_test/randomPage.dart';
@@ -25,10 +26,7 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
       size: 150,
     ),
     randomPage(),
-    Icon(
-      Icons.article_outlined,
-      size: 150,
-    ),
+    cravingsScreen(),
     uploadScreen(),
     Profile(),
   ];
