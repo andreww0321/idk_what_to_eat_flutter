@@ -139,12 +139,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
         print('signed in with email');
         if(!mounted) return;
 
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Profile(currentUser: currentUser),
-          ),
-        );
+
         Navigator.push(
             context, MaterialPageRoute(builder: (context) {
           return BasicBottomNavBar(

@@ -31,7 +31,7 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
     randomPage(),
     cravingsScreen(),
     uploadScreen(),
-    Profile(currentUser: user),
+    Profile(currentUser: user)
   ];
 
   void _onItemTapped(int index) {
