@@ -10,6 +10,7 @@ import 'package:idk_what_to_eat_test/myUser.dart';
 import 'package:idk_what_to_eat_test/signUpScreenUI.dart';
 import 'package:idk_what_to_eat_test/homePageNavBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:idk_what_to_eat_test/profile.dart';
 
 final userRef = FirebaseFirestore.instance.collection('users');
 
@@ -137,10 +138,18 @@ class _OpeningScreenState extends State<OpeningScreen> {
         print(currentUser.lastName);
         print('signed in with email');
         if(!mounted) return;
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Profile(currentUser: currentUser),
+          ),
+        );
         Navigator.push(
             context, MaterialPageRoute(builder: (context) {
           return BasicBottomNavBar(
-              title: 'BasicBottomNavBar');
+              title: 'BasicBottomNavBar',
+          currentUser: currentUser);
         }));
       }
       // User is signed in
