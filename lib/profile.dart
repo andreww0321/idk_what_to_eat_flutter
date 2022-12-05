@@ -19,11 +19,22 @@ class _ProfileState extends State<Profile> {
       body: Center(
         child: Column(
             children: [
+              Padding(
+                  padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child:Text("Profile",
+                      style: TextStyle(
+                        fontSize: 50,
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue
+                      )
+                  )
+
+              ),
         Padding(
               padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
               child:Text("Username: " + widget.currentUser.username,
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 20,
                   )
               )
 
@@ -32,7 +43,7 @@ class _ProfileState extends State<Profile> {
                   padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
                   child:Text("First Name: " + widget.currentUser.firstName,
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 20,
                       )
                   )
 
@@ -42,7 +53,16 @@ class _ProfileState extends State<Profile> {
                   padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
                   child:Text("Last Name: " + widget.currentUser.lastName,
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 20,
+                      )
+                  )
+
+              ),
+              Padding(
+                  padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child:Text("Email: " + widget.currentUser.email,
+                      style: TextStyle(
+                        fontSize: 20,
                       )
                   )
 
