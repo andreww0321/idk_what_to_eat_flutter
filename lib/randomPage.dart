@@ -1,6 +1,9 @@
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'homePageNavBar.dart';
 
 
 class randomPage extends StatefulWidget {
@@ -150,7 +153,10 @@ class _randomPageState extends State<randomPage> {
               padding: const EdgeInsets.fromLTRB(3, 10, 3, 10),
               child: ElevatedButton(
                 onPressed: () {
-
+                  getData();
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const randomResults(title: 'Restaurants Found For You');
+                  }));
                 },
                 child: const Text(
                   'Find Restaurants',
@@ -165,6 +171,74 @@ class _randomPageState extends State<randomPage> {
           ]),//Checkbox//Column
     ), //Center//Center
   );
-  //Sca// ffold//MaterialApp
+}
+//------------------------------------------------------------------------------>
+// Create the screen which displays the restaurants
+
+class randomResults extends StatefulWidget {
+  const randomResults({Key? key, required String title}) : super(key: key);
+
+  @override
+  // Sets the opening screen state to the OpeningScreenState class
+  State<randomResults> createState() => _randomResultsState();
 }
 
+class _randomResultsState extends State<randomResults> {
+
+  @override
+  Widget build(BuildContext context) {
+    return
+      Scaffold(
+          body: Center(
+              child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                      child: Divider(
+                        color: Colors.blue,
+                        thickness: 15,
+                      ),),
+                    Divider(
+                      color: Colors.blue,
+                      thickness: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
+                      child: Divider(
+                        color: Colors.blue,
+                        thickness: 15,
+                      ),
+                    ),
+                    ElevatedButton(
+                      child: const Text('Try Again'),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    Divider(
+                      color: Colors.blue,
+                      thickness: 15,
+                    ),
+                  ]
+              )
+          )
+      );
+  }
+}
+
+void getData() {
+  int length = 100;
+  int iterator = 0;
+  var randInt = Random().nextInt(length);
+  FirebaseFirestore.instance.collection('restaurants').get().then((value) => {
+    value.docs.forEach((result){
+      if (iterator == randInt) {
+        print(result.data());
+      }
+      else {
+        result.data();
+        iterator++;
+      }
+    })
+  });
+}
