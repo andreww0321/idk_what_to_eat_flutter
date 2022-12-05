@@ -94,7 +94,7 @@ class _uploadScreenState extends State<uploadScreen> {
                   )
               ),
             ),
-            const SizedBox(height: 500.0),
+            const SizedBox(height: 100.0),
             GestureDetector(
               onTap: () async {
                 await compressImage();
@@ -106,6 +106,7 @@ class _uploadScreenState extends State<uploadScreen> {
                 _restaurantEditingController.clear();
                 file = null;
                 postId = Uuid().v4();
+                print("uploaded");
               },
               child: Container(
                 color: Colors.blueAccent,
@@ -154,7 +155,8 @@ class _uploadScreenState extends State<uploadScreen> {
       "postId": postId,
       "caption": caption,
       "restaurantName": resturantName,
-      "mediaUrl": mediaUrl});
+      "mediaUrl": mediaUrl,
+      "timestamp": Timestamp.fromDate(DateTime.now()),});
   }
 }
 

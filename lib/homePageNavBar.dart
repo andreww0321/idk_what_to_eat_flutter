@@ -8,7 +8,9 @@ import 'package:idk_what_to_eat_test/cravingsScreen.dart';
 import 'package:idk_what_to_eat_test/profile.dart';
 import 'package:idk_what_to_eat_test/CurrentUser.dart';
 import 'package:idk_what_to_eat_test/randomPage.dart';
+import 'package:idk_what_to_eat_test/cravingsScreen.dart';
 import 'uploadScreen.dart';
+import 'package:idk_what_to_eat_test/timeline.dart';
 
 class BasicBottomNavBar extends StatefulWidget {
   const BasicBottomNavBar({Key? key, required this.title, required this.currentUser}) : super(key: key, );
@@ -24,10 +26,7 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
   late CurrentUser user = widget.currentUser;
 
   late final List<Widget> _pages = <Widget>[
-    Icon(
-      Icons.home,
-      size: 150,
-    ),
+    timeline(),
     randomPage(),
     cravingsScreen(),
     uploadScreen(),
