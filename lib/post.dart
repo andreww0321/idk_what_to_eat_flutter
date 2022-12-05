@@ -94,7 +94,7 @@ buildPostFooter(){
         Divider(
           color: Colors.blueAccent, //color of divider
           height: 5, //height spacing of divider
-          thickness: 2, //thickness of divier line
+          thickness: 10, //thickness of divier line
         )
       ],
     );
