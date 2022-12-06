@@ -10,7 +10,7 @@ class timeline extends StatefulWidget {
 }
 
 class _timelineState extends State<timeline> {
-  late List<Post> posts;
+  List<Post>? posts=null;
   final timelineRef = FirebaseFirestore.instance.collection('posts');
   
   @override
@@ -29,13 +29,13 @@ class _timelineState extends State<timeline> {
 
   buildTimeline() {
     if (posts==null){
-      return Text("No posts");
+      return Text("Fetching Posts...");
     }
-    else if (posts.isEmpty){
-      return Text("No posts");
+    else if (posts!.isEmpty){
+      return Text("No Posts to Show!");
     }
     else {
-      return ListView(children: posts);
+      return ListView(children: posts!);
     }
   }
 
