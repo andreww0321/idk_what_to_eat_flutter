@@ -1,3 +1,5 @@
+// this page displays all the posts from all users
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/post.dart';
@@ -19,6 +21,7 @@ class _timelineState extends State<timeline> {
     getTimeline();
   }
 
+  // this function grabs the posts from firestore and add them to a list
   getTimeline() async{
     QuerySnapshot snapshot = await timelineRef.orderBy('timestamp', descending: true).get();
     List<Post> post = snapshot.docs.map((doc) => Post.fromDocument(doc)).toList();
@@ -27,6 +30,7 @@ class _timelineState extends State<timeline> {
     });
   }
 
+  // Cases of posts to be displayed
   buildTimeline() {
     if (posts==null){
       return Text("Fetching Posts...");
@@ -39,6 +43,7 @@ class _timelineState extends State<timeline> {
     }
   }
 
+  // UI design
   Widget build(BuildContext context) {
     return Scaffold(
       body: RefreshIndicator(

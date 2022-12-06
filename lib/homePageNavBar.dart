@@ -8,7 +8,6 @@ import 'package:idk_what_to_eat_test/cravingsScreen.dart';
 import 'package:idk_what_to_eat_test/profile.dart';
 import 'package:idk_what_to_eat_test/CurrentUser.dart';
 import 'package:idk_what_to_eat_test/randomPage.dart';
-import 'package:idk_what_to_eat_test/cravingsScreen.dart';
 import 'uploadScreen.dart';
 import 'package:idk_what_to_eat_test/timeline.dart';
 

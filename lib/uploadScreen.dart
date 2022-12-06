@@ -1,16 +1,14 @@
+// This file contains the upload UI and functionality
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:idk_what_to_eat_test/photoStorage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:image/image.dart' as Im;
 import 'package:uuid/uuid.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+
 
 class uploadScreen extends StatefulWidget {
   const uploadScreen({Key? key}) : super(key: key);
@@ -28,6 +26,7 @@ class _uploadScreenState extends State<uploadScreen> {
   final storageRef = FirebaseStorage.instance.ref();
   final postsRef = FirebaseFirestore.instance.collection('posts');
 
+  // this is the UI build
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,6 +128,8 @@ class _uploadScreenState extends State<uploadScreen> {
       ),
     );
   }
+
+  // this function compresses the images to take up less space in firestore
   compressImage() async{
     final tempDir = await getTemporaryDirectory();
     final path = tempDir.path;
@@ -137,6 +138,7 @@ class _uploadScreenState extends State<uploadScreen> {
     file = compressedImageFile;
   }
 
+  // this function grabs the mediaURl of the photo to store in firebase
   Future<String> uploadImage(imageFile) async{
     UploadTask uploadTask = storageRef.child("post_$postId.jpg").putFile(imageFile);
     TaskSnapshot storageSanp = await uploadTask;
@@ -144,6 +146,7 @@ class _uploadScreenState extends State<uploadScreen> {
     return downloadUrl;
   }
 
+  // this functions allows the user to pick an image from their camera roll
   Future<File?>pickImage() async{
     XFile? image = (await ImagePicker().pickImage(source: ImageSource.gallery));
     final File? file = File(image!.path);
@@ -151,6 +154,7 @@ class _uploadScreenState extends State<uploadScreen> {
     return file;
   }
 
+  // this function adds the post into firestore database
   createPostInFirestore({required String mediaUrl, required String resturantName, required String caption}){
     postsRef.doc(postId).set({
       "postId": postId,

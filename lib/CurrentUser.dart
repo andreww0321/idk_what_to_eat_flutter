@@ -1,3 +1,5 @@
+// this file creates a current user object to track who is currently logged in
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -10,6 +12,7 @@ class CurrentUser{
   final String id;
   final String bio;
 
+  // current user constructor
   CurrentUser({
     required this.username,
     required this.password,
@@ -20,6 +23,7 @@ class CurrentUser{
     required this.bio,
   });
 
+  // this method returns the current user information
   factory CurrentUser.fromDocument(DocumentSnapshot doc){
     return CurrentUser(
       id: doc['id'],

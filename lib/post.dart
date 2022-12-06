@@ -1,3 +1,4 @@
+// this file creates post objects
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,7 @@ class Post extends StatefulWidget {
   final String caption;
   final String mediaUrl;
 
+  // post object constructor
   const Post({super.key,
     required this.postId,
     required this.restaurantName,
@@ -14,6 +16,7 @@ class Post extends StatefulWidget {
     required this.caption,
   });
 
+  // returns post object with all according information from firestore
   factory Post.fromDocument(DocumentSnapshot doc){
     return Post(
       postId: doc['postId'],
@@ -38,6 +41,7 @@ class _PostState extends State<Post> {
   final String caption;
   final String mediaUrl;
 
+  // Post state constructor
   _PostState({
     required this.postId,
     required this.restaurantName,
@@ -45,6 +49,7 @@ class _PostState extends State<Post> {
     required this.caption,
   });
 
+  // Restuarant name of post UI
   buildPostHeader(){
     return Column(
       children: <Widget>[
@@ -59,6 +64,7 @@ class _PostState extends State<Post> {
     );
   }
 
+  // Image section of post UI
   buildPostImage(){
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -69,6 +75,7 @@ class _PostState extends State<Post> {
     );
   }
 
+  // caption section of post UI
 buildPostFooter(){
     return Column(
       children: <Widget>[
@@ -83,6 +90,7 @@ buildPostFooter(){
     );
   }
 
+  // Display post UI
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -122,6 +122,7 @@ class _OpeningScreenState extends State<OpeningScreen> {
         ));
   }
 
+  // this creates the user in firestore or pulls their information from firestore
   createUserInFirestore() async {
     final User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
