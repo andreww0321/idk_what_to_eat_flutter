@@ -37,7 +37,7 @@ class _uploadScreenState extends State<uploadScreen> {
           children: [
             Container(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height*0.3,
+              height: MediaQuery.of(context).size.height*0.15,
               color: Colors.grey,
               child: Center(
                 child: ElevatedButton(
@@ -76,6 +76,7 @@ class _uploadScreenState extends State<uploadScreen> {
                 )
               ),
             ),
+            const SizedBox(height: 5,),
             TextField(
               inputFormatters: [
                 LengthLimitingTextInputFormatter(250),
