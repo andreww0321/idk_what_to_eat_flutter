@@ -1,16 +1,10 @@
-# idk_what_to_eat_test
+## IDK What to Eat
 
-A new Flutter project.
+This project contains an app that helps you decide where to eat. 
 
-## Getting Started
+# Overview
 
-This project is a starting point for a Flutter application.
+Users are given the option to select a restaurant randomly, select a restaurant based on cravings, or simply scroll through others posts to get inspired.
+The user is also able to upload posts which include a picture of their food/restaurant, a caption, and the restaurant name in order to further assist others in finding great restaurants.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Developed by BEAK

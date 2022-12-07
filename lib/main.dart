@@ -5,8 +5,11 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:idk_what_to_eat_test/CurrentUser.dart';
+import 'package:idk_what_to_eat_test/currentRestaurant.dart';
 import 'package:idk_what_to_eat_test/signInScreenUI.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // The main function calls for the app to run
 void main() async{
@@ -23,17 +26,20 @@ class MyApp extends StatelessWidget {
 
   // The BuildContext builds what the main page will look like
   @override
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
+          body:
         // Calls the OpeningScreen to be the first page the user sees
-        body: const OpeningScreen(),
+        const OpeningScreen(),
       ),
     );
   }
 }
+
 
 
 

@@ -1,24 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:idk_what_to_eat_test/authentic.dart';
+import 'package:idk_what_to_eat_test/CurrentUser.dart';
 
 class Profile extends StatefulWidget {
 
-  const Profile({super.key});
-
+  const Profile({super.key, required this.currentUser});
+  final CurrentUser currentUser;
   @override
   State<Profile> createState() => _ProfileState();
+
 }
 
 class _ProfileState extends State<Profile> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController username1Controller = TextEditingController();
-  TextEditingController username2Controller = TextEditingController();
-  TextEditingController password1Controller = TextEditingController();
-  TextEditingController password2Controller = TextEditingController();
+  final AuthService _auth = AuthService();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => Scaffold(
+      body: Center(
+        child: Column(
+            children: [
+              Padding(
+                  padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child:Text("Profile",
+                      style: TextStyle(
+                        fontSize: 50,
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue
+                      )
+                  )
 
-    return Padding(
+              ),
+        Padding(
+              padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+              child:Text("Username: " + widget.currentUser.username,
+                  style: TextStyle(
+                    fontSize: 20,
+                  )
+              )
+
+        ),
+              Padding(
+                  padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child:Text("First Name: " + widget.currentUser.firstName,
+                      style: TextStyle(
+                        fontSize: 20,
+                      )
+                  )
+
+              ),
+
+              Padding(
+                  padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child:Text("Last Name: " + widget.currentUser.lastName,
+                      style: TextStyle(
+                        fontSize: 20,
+                      )
+                  )
+
+              ),
+              Padding(
+                  padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child:Text("Email: " + widget.currentUser.email,
+                      style: TextStyle(
+                        fontSize: 20,
+                      )
+                  )
+
+              )
+            ]
+        
+
+      )
+    ));
+}
+/*
+return Padding(
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: <Widget>[
@@ -103,5 +159,4 @@ class _ProfileState extends State<Profile> {
 
           ],
         ));
-  }
-}
+ */

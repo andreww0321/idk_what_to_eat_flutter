@@ -9,26 +9,27 @@ import 'package:idk_what_to_eat_test/profile.dart';
 import 'package:idk_what_to_eat_test/CurrentUser.dart';
 import 'package:idk_what_to_eat_test/randomPage.dart';
 import 'uploadScreen.dart';
+import 'package:idk_what_to_eat_test/timeline.dart';
 
 class BasicBottomNavBar extends StatefulWidget {
-  const BasicBottomNavBar({Key? key, required this.title}) : super(key: key);
+  const BasicBottomNavBar({Key? key, required this.title, required this.currentUser}) : super(key: key, );
   final String title;
+  final CurrentUser currentUser;
   @override
+
   _BasicBottomNavBarState createState() => _BasicBottomNavBarState();
 }
 
 class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
   int _selectedIndex = 0;
+  late CurrentUser user = widget.currentUser;
 
-  static const List<Widget> _pages = <Widget>[
-    Icon(
-      Icons.home,
-      size: 150,
-    ),
+  late final List<Widget> _pages = <Widget>[
+    timeline(),
     randomPage(),
     cravingsScreen(),
     uploadScreen(),
-    Profile(),
+    Profile(currentUser: user)
   ];
 
   void _onItemTapped(int index) {

@@ -1,3 +1,5 @@
+// this file authenticates that the user has an account with our app
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:idk_what_to_eat_test/myUser.dart';
 import 'package:idk_what_to_eat_test/signInScreenUI.dart';
@@ -12,12 +14,6 @@ class AuthService {
   MyUser? _userFromFirebseUser(User? user) {
     return user != null ? MyUser(uid: user.uid) : null;
   }
-
-  // // auth change user stream
-  // Stream<MyUser?> get user {
-  //   return _auth.authStateChanges()
-  //       .map(_userFromFirebseUser);
-  // }
 
   // sign in anonymously
   Future signInAnon() async {
