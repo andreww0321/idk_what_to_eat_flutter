@@ -19,18 +19,21 @@ class _ProfileState extends State<Profile> {
       body: Center(
         child: Column(
             children: [
-              Padding(
-                  padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                  child:Text("Profile",
-                      style: TextStyle(
-                        fontSize: 50,
-                        decoration: TextDecoration.underline,
-                        color: Colors.blue
-                      )
-                  )
+              Expanded(
+                child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                    child:Text("Profile",
+                        style: TextStyle(
+                          fontSize: 50,
+                          decoration: TextDecoration.underline,
+                          color: Colors.blue
+                        )
+                    )
 
+                ),
               ),
-        Padding(
+        Expanded(
+          child: Padding(
               padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
               child:Text("Username: " + widget.currentUser.username,
                   style: TextStyle(
@@ -38,18 +41,21 @@ class _ProfileState extends State<Profile> {
                   )
               )
 
+          ),
         ),
-              Padding(
-                  padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
-                  child:Text("First Name: " + widget.currentUser.firstName,
-                      style: TextStyle(
-                        fontSize: 20,
-                      )
-                  )
 
-              ),
+  Expanded(
+    child: Padding(
+      padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
+      child:Text("First Name: " + widget.currentUser.firstName,
+          style: TextStyle(
+            fontSize: 20,
+          )
+      )
 
-              Padding(
+  ),),
+    Expanded(
+                child: Padding(
                   padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
                   child:Text("Last Name: " + widget.currentUser.lastName,
                       style: TextStyle(
@@ -57,16 +63,18 @@ class _ProfileState extends State<Profile> {
                       )
                   )
 
-              ),
-              Padding(
-                  padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
-                  child:Text("Email: " + widget.currentUser.email,
-                      style: TextStyle(
-                        fontSize: 20,
-                      )
-                  )
+              ),),
+       Expanded(
+         child: Padding(
+             padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
+             child:Text("Email: " + widget.currentUser.email,
+                 style: TextStyle(
+                   fontSize: 20,
+                 )
+             )
 
-              )
+         )
+       )
             ]
         
 
