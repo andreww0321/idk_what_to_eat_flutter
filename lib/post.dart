@@ -49,7 +49,7 @@ class _PostState extends State<Post> {
     required this.caption,
   });
 
-  // Restuarant name of post UI
+  // Restaurant name of post UI
   buildPostHeader(){
     return Column(
       children: <Widget>[

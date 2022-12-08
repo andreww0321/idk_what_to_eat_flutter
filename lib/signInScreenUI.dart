@@ -94,12 +94,6 @@ class _OpeningScreenState extends State<OpeningScreen> {
                 ),
             ),
 
-            TextButton(
-              onPressed: () {
-                //forgot password screen
-              },
-              child: const Text('Forgot Password',),
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
