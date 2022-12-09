@@ -51,32 +51,27 @@ class _uploadScreenState extends State<uploadScreen> {
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: 30),
+                    fontSize: 25),
               ),
             ),
             Divider(
               color: Colors.blue,
               thickness: 15,
             ),
-            const SizedBox(height: 10.0),
-            Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height*0.15,
-              color: Colors.grey,
-              child: Center(
-                child: ElevatedButton(
-                  onPressed: () async {
-                    file = await pickImage();
-                  },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
-                    ),
-                    child: const Text(
-                    'Choose Image',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white,
-                    ),
+            const SizedBox(height: 5.0),
+            Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  file = await pickImage();
+                },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                  ),
+                  child: const Text(
+                  'Choose Image',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -119,7 +114,7 @@ class _uploadScreenState extends State<uploadScreen> {
                   )
               ),
             ),
-            const SizedBox(height: 100.0),
+            const SizedBox(height: 50.0),
             GestureDetector(
               onTap: () async {
                 await compressImage();
