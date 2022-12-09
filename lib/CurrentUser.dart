@@ -10,7 +10,7 @@ class CurrentUser{
   final String lastName;
   final String email;
   final String id;
-  final String bio;
+  late final String bio;
 
   // current user constructor
   CurrentUser({
