@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/authentic.dart';
 import 'package:idk_what_to_eat_test/CurrentUser.dart';
@@ -16,76 +17,110 @@ class Profile extends StatefulWidget {
 // The _ProfileState class contains the widgets that make the profile information appear
 class _ProfileState extends State<Profile> {
   final AuthService _auth = AuthService();
-
+  TextEditingController bioController = TextEditingController();
   @override
   Widget build(BuildContext context) => Scaffold(
       body: Center(
         child: Column(
             children: [
               Expanded(
-                child: Padding(
-                    padding: EdgeInsets.all(40),
                     // This displays the heading for the profile page
                     child:Text("Profile",
                         style: TextStyle(
                           fontSize: 50,
                           decoration: TextDecoration.underline,
-                          color: Colors.blue
+                          color: Colors.black
                         )
                     )
-
-                ),
               ),
         Expanded(
-          child: Padding(
-              padding: EdgeInsets.all(20),
               // This displays the username for the user
               child:Text("Username: " + widget.currentUser.username,
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 25,
+                      color: Colors.blue
                   )
               )
 
           ),
-        ),
 
   Expanded(
-    child: Padding(
-      padding:  EdgeInsets.all(20),
       // This displays the first name for the user
       child:Text("First Name: " + widget.currentUser.firstName,
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 25,
+              color: Colors.blue
           )
       )
 
-  ),),
+  ),
     Expanded(
-                child: Padding(
-                  padding:  EdgeInsets.all(20),
                   // This displays the last name for the user
                   child:Text("Last Name: " + widget.currentUser.lastName,
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 25,
+                          color: Colors.blue
                       )
                   )
 
-              ),),
+              ),
        Expanded(
-         child: Padding(
-             padding:  EdgeInsets.all(20),
              // This displays the email for the user
              child:Text("Email: " + widget.currentUser.email,
                  style: TextStyle(
-                   fontSize: 30,
+                   fontSize: 25,
+                     color: Colors.blue
                  )
              )
 
-         )
-       )
+         ),
+  Expanded(
+      child: Padding(
+          padding:  EdgeInsets.only(left: 10, right: 10),
+  // This displays the email for the user
+  child:Text("Bio: " + widget.currentUser.bio,
+  style: TextStyle(
+  fontSize: 25,
+      color: Colors.blue
+  )
+  )),),
+
+              Expanded(
+                  child: Padding(
+                      padding:  EdgeInsets.all(5),
+                      // This displays the email for the user
+                      child:TextFormField(controller: bioController,
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.blue
+      ),
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Change your bio',
+                              labelText: 'Bio',
+                            ),
+                          )
+                      )
+
+
+                  ),
+
+  // This allows the user to update their bio
+  Expanded(
+  child: ElevatedButton(
+  child: const Text('Change Bio'),
+  onPressed: () async
+  {
+    final user = FirebaseFirestore.instance.collection("users").doc(widget.currentUser.id);
+    String bioUpdate = bioController.text;
+    user.update({"bio": bioUpdate});
+}
+),
+)
             ]
         
 
       )
     ));
 }
+
