@@ -33,9 +33,9 @@ class _randomPageState extends State<randomPage> {
                 thickness: 15,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('Find a Place to Eat Even If You Don\'t Know What Your Craving!',
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('Find a Place to Eat, Even If You Don\'t Know What You\'re Craving!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.black,
@@ -219,6 +219,7 @@ class _randomResultsState extends State<randomResults> {
                       color: Colors.blue,
                       thickness: 15,
                     ),
+
                   ]
               )
           )
