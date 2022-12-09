@@ -29,7 +29,7 @@ class _ProfileState extends State<Profile> {
                         style: TextStyle(
                           fontSize: 50,
                           decoration: TextDecoration.underline,
-                          color: Colors.blue
+                          color: Colors.black
                         )
                     )
               ),
@@ -38,6 +38,7 @@ class _ProfileState extends State<Profile> {
               child:Text("Username: " + widget.currentUser.username,
                   style: TextStyle(
                     fontSize: 25,
+                      color: Colors.blue
                   )
               )
 
@@ -48,6 +49,7 @@ class _ProfileState extends State<Profile> {
       child:Text("First Name: " + widget.currentUser.firstName,
           style: TextStyle(
             fontSize: 25,
+              color: Colors.blue
           )
       )
 
@@ -57,6 +59,7 @@ class _ProfileState extends State<Profile> {
                   child:Text("Last Name: " + widget.currentUser.lastName,
                       style: TextStyle(
                         fontSize: 25,
+                          color: Colors.blue
                       )
                   )
 
@@ -66,17 +69,21 @@ class _ProfileState extends State<Profile> {
              child:Text("Email: " + widget.currentUser.email,
                  style: TextStyle(
                    fontSize: 25,
+                     color: Colors.blue
                  )
              )
 
          ),
   Expanded(
+      child: Padding(
+          padding:  EdgeInsets.only(left: 10, right: 10),
   // This displays the email for the user
   child:Text("Bio: " + widget.currentUser.bio,
   style: TextStyle(
   fontSize: 25,
+      color: Colors.blue
   )
-  )),
+  )),),
 
               Expanded(
                   child: Padding(
@@ -84,7 +91,8 @@ class _ProfileState extends State<Profile> {
                       // This displays the email for the user
                       child:TextFormField(controller: bioController,
                             style: TextStyle(
-                                fontSize: 25
+                                fontSize: 25,
+                                color: Colors.blue
       ),
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
