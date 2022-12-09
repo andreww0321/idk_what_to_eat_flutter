@@ -188,7 +188,14 @@ class _randomResultsState extends State<randomResults> {
 
   @override
   Widget build(BuildContext context) {
-    var randInt = Random().nextInt(widget.restaurant.length);
+    String text = "";
+    if (widget.restaurant.length>0) {
+      var randInt = Random().nextInt(widget.restaurant.length);
+       text = ("Restaurant Name: \n" +widget.restaurant.elementAt(randInt));
+    }
+    else{
+      text = "Loading...";
+    }
 
     return
       Scaffold(
@@ -203,7 +210,7 @@ class _randomResultsState extends State<randomResults> {
                       ),),
                     Padding(
                         padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child:Text("Restaurant Name: " + widget.restaurant.elementAt(randInt),
+                        child:Text(text,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 40,
