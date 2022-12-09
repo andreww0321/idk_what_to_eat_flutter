@@ -34,6 +34,28 @@ class _uploadScreenState extends State<uploadScreen> {
         padding: const EdgeInsets.all(14.0),
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+              child: Divider(
+                color: Colors.blue,
+                thickness: 15,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Share a Post to Help Others Find More Restaurants!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 30),
+              ),
+            ),
+            Divider(
+              color: Colors.blue,
+              thickness: 15,
+            ),
+            const SizedBox(height: 10.0),
             Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height*0.15,

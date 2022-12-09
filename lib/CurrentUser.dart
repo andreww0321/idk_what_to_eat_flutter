@@ -10,7 +10,7 @@ class CurrentUser{
   final String lastName;
   final String email;
   final String id;
-  final String bio;
+  late final String bio;
 
   // current user constructor
   CurrentUser({
@@ -27,7 +27,7 @@ class CurrentUser{
   factory CurrentUser.fromDocument(DocumentSnapshot doc){
     return CurrentUser(
       id: doc['id'],
-      email: doc['username'],
+      email: doc['email'],
       password: doc['password'],
       firstName: doc['first name'],
       lastName: doc['last name'],

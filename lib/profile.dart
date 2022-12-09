@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/authentic.dart';
 import 'package:idk_what_to_eat_test/CurrentUser.dart';
 
+// The profile class displays the user's information, such as their name, username, and password
 class Profile extends StatefulWidget {
 
+  // The constructor gets the currentUser information and sends it to the _ProfileState
   const Profile({super.key, required this.currentUser});
   final CurrentUser currentUser;
   @override
@@ -11,152 +14,113 @@ class Profile extends StatefulWidget {
 
 }
 
+// The _ProfileState class contains the widgets that make the profile information appear
 class _ProfileState extends State<Profile> {
   final AuthService _auth = AuthService();
-
+  TextEditingController bioController = TextEditingController();
   @override
   Widget build(BuildContext context) => Scaffold(
       body: Center(
         child: Column(
             children: [
-              Padding(
-                  padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                  child:Text("Profile",
-                      style: TextStyle(
-                        fontSize: 50,
-                        decoration: TextDecoration.underline,
-                        color: Colors.blue
-                      )
-                  )
-
+              Expanded(
+                    // This displays the heading for the profile page
+                    child:Text("Profile",
+                        style: TextStyle(
+                          fontSize: 50,
+                          decoration: TextDecoration.underline,
+                          color: Colors.black
+                        )
+                    )
               ),
-        Padding(
-              padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+        Expanded(
+              // This displays the username for the user
               child:Text("Username: " + widget.currentUser.username,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 25,
+                      color: Colors.blue
                   )
               )
 
-        ),
-              Padding(
-                  padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
-                  child:Text("First Name: " + widget.currentUser.firstName,
-                      style: TextStyle(
-                        fontSize: 20,
-                      )
-                  )
+          ),
 
-              ),
+  Expanded(
+      // This displays the first name for the user
+      child:Text("First Name: " + widget.currentUser.firstName,
+          style: TextStyle(
+            fontSize: 25,
+              color: Colors.blue
+          )
+      )
 
-              Padding(
-                  padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
+  ),
+    Expanded(
+                  // This displays the last name for the user
                   child:Text("Last Name: " + widget.currentUser.lastName,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 25,
+                          color: Colors.blue
                       )
                   )
 
               ),
-              Padding(
-                  padding:  EdgeInsets.fromLTRB(0, 40, 0, 0),
-                  child:Text("Email: " + widget.currentUser.email,
-                      style: TextStyle(
-                        fontSize: 20,
-                      )
-                  )
+       Expanded(
+             // This displays the email for the user
+             child:Text("Email: " + widget.currentUser.email,
+                 style: TextStyle(
+                   fontSize: 25,
+                     color: Colors.blue
+                 )
+             )
 
-              )
+         ),
+  Expanded(
+      child: Padding(
+          padding:  EdgeInsets.only(left: 10, right: 10),
+  // This displays the email for the user
+  child:Text("Bio: " + widget.currentUser.bio,
+  style: TextStyle(
+  fontSize: 25,
+      color: Colors.blue
+  )
+  )),),
+
+              Expanded(
+                  child: Padding(
+                      padding:  EdgeInsets.all(5),
+                      // This displays the email for the user
+                      child:TextFormField(controller: bioController,
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.blue
+      ),
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Change your bio',
+                              labelText: 'Bio',
+                            ),
+                          )
+                      )
+
+
+                  ),
+
+  // This allows the user to update their bio
+  Expanded(
+  child: ElevatedButton(
+  child: const Text('Change Bio'),
+  onPressed: () async
+  {
+    final user = FirebaseFirestore.instance.collection("users").doc(widget.currentUser.id);
+    String bioUpdate = bioController.text;
+    user.update({"bio": bioUpdate});
+}
+),
+)
             ]
         
 
       )
     ));
 }
-/*
-return Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView(
-          children: <Widget>[
-            Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Profile',
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 30),
-                )),
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: TextField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Email',
-                ),
-              ),
 
-            ),
-
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: TextField(
-                controller: username1Controller,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Current Username',
-                ),
-              ),
-            ),
-
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: TextField(
-                controller: username2Controller,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'New Username',
-                ),
-              ),
-            ),
-
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: TextField(
-                controller: password1Controller,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Current Password',
-                ),
-              ),
-            ),
-
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: TextField(
-                controller: password2Controller,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'New Password',
-                ),
-              ),
-            ),
-
-
-            Container(
-                height: 50,
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: ElevatedButton(
-                  child: const Text('Confirm'),
-                  onPressed: () {
-                    print(username2Controller.text);
-                    print(password2Controller.text);
-                  },
-                )
-            ),
-
-          ],
-        ));
- */

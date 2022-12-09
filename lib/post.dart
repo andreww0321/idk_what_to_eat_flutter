@@ -49,7 +49,7 @@ class _PostState extends State<Post> {
     required this.caption,
   });
 
-  // Restuarant name of post UI
+  // Restaurant name of post UI
   buildPostHeader(){
     return Column(
       children: <Widget>[
@@ -83,7 +83,7 @@ buildPostFooter(){
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(padding: EdgeInsets.only(top: 40.0, left: 20.0)),
-            Text("Caption: " + caption),
+            Expanded(child: Text("Caption: " + caption)),
           ],
         )
       ],
