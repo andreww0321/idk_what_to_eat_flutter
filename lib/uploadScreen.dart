@@ -35,7 +35,7 @@ class _uploadScreenState extends State<uploadScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Divider(
                 color: Colors.blue,
                 thickness: 15,

@@ -1,5 +1,6 @@
 
 
+import 'dart:ffi';
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -18,10 +19,28 @@ class _randomPageState extends State<randomPage> {
   bool isChecked2 = false;
   bool isChecked3 = false;
   bool isChecked4 = false;
+  final List resultsArray= [];
+
+  Future<List> getData() async {
+
+    FirebaseFirestore.instance.collection('restaurants').get().then((value) =>
+    {value.docs.forEach((result) {
+        resultsArray.add(result.get('name') as String);
+        // if (i == randInt) {
+        //   randomRes = result.get('name') as String;
+        //   //resultsArray.add(result.toString());
+        //   print(randomRes);
+        //   i++;
+        // }
+      })
+    });
+    return resultsArray;
+  }
 
   @override
   //App widget tree
   Widget build(BuildContext context) => Scaffold(
+
     body: Center(
       child: Column(
           children: [
@@ -127,9 +146,11 @@ class _randomPageState extends State<randomPage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(3, 10, 3, 10),
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  List result = await getData();
+                  print(result.length);
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const randomResults(title: 'Restaurants Found For You');
+                    return randomResults(title: 'Restaurants Found For You', restaurant: result);
                   }));
                 },
                 child: const Text(
@@ -143,15 +164,20 @@ class _randomPageState extends State<randomPage> {
               thickness: 15,
             ),
           ]),//Checkbox//Column
-    ), //Center//Center
+    ),
+    //Center//Center
   );
+
 }
 
 //------------------------------------------------------------------------------>
 // Create the screen which displays the restaurants
 
 class randomResults extends StatefulWidget {
-  const randomResults({Key? key, required String title}) : super(key: key);
+
+
+  randomResults({Key? key, required String title, required this.restaurant}) :super(key: key);
+  List restaurant;
 
   @override
   // Sets the opening screen state to the OpeningScreenState class
@@ -162,6 +188,8 @@ class _randomResultsState extends State<randomResults> {
 
   @override
   Widget build(BuildContext context) {
+    var randInt = Random().nextInt(widget.restaurant.length);
+
     return
       Scaffold(
           body: Center(
@@ -173,7 +201,16 @@ class _randomResultsState extends State<randomResults> {
                         color: Colors.blue,
                         thickness: 15,
                       ),),
-                    Text(getData()),
+                    Padding(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child:Text("Restaurant Name: " + widget.restaurant.elementAt(randInt),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 40,
+                            )
+                        )
+
+                    ),
                     Divider(
                       color: Colors.blue,
                       thickness: 15,
@@ -201,24 +238,24 @@ class _randomResultsState extends State<randomResults> {
       );
   }
 
-  String getData() {
-    // var resultsArray = [];
-    String randomRes = "";
-    var i = 0;
-    var randInt = Random().nextInt(3);
-    FirebaseFirestore.instance.collection('restaurants').get().then((value) =>
-    {
-      value.docs.forEach((result) {
-        if (i == randInt) {
-          randomRes = result.get('name') as String;
-          //resultsArray.add(result.toString());
-          print(randomRes);
-          i++;
-        }
-      })
-    });
-    return randomRes;
-  }
+  // Future<String> getData() async {
+  //   String randomRes = "";
+  //   // var resultsArray = [];
+  //   var i = 0;
+  //   var randInt = Random().nextInt(3);
+  //   FirebaseFirestore.instance.collection('restaurants').get().then((value) =>
+  //   {
+  //     value.docs.forEach((result) {
+  //       if (i == randInt) {
+  //         randomRes = result.get('name') as String;
+  //         //resultsArray.add(result.toString());
+  //         print(randomRes);
+  //         i++;
+  //       }
+  //     })
+  //   });
+  //   return randomRes;
+  // }
 }
 
 /*
