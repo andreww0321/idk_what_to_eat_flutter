@@ -1,6 +1,7 @@
+//Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+//Description: This file creates the random page that displays a random restaurant
 
-
-import 'dart:ffi';
+// Imports the necessary packages for the app to run
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';

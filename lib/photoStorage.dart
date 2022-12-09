@@ -1,4 +1,7 @@
-// this file allows for photos to be stored
+//Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+//Description: This file allows for photos to be stored
+
+// Imports the necessary packages for the app to run
 import 'dart:io';
 import 'package:firebase_core/firebase_core.dart'as firebase_core;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;

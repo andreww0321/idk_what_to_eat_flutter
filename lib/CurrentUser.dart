@@ -1,7 +1,9 @@
-// this file creates a current user object to track who is currently logged in
+/*  Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+    Description: This file creates a current user object to track who is currently logged in
+*/
 
+// Imports the necessary packages for the app to run
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class CurrentUser{
   final String username;

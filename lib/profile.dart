@@ -1,3 +1,7 @@
+//Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+//Description: This file creates the profile page and displays the current user's information
+
+// Imports the necessary packages for the app to run
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/authentic.dart';

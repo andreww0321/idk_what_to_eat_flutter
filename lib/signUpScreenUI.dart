@@ -5,7 +5,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/authentic.dart';
-import 'homePageNavBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:idk_what_to_eat_test/signInScreenUI.dart';
 

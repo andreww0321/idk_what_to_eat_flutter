@@ -1,3 +1,6 @@
+//Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+//Description: Gets ID from the Firebase Authentication
+
 class MyUser{
   final String uid;
 

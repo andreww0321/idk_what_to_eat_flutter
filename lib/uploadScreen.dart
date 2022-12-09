@@ -1,4 +1,7 @@
-// This file contains the upload UI and functionality
+//Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+//Description: This contains the upload UI and functionality
+
+// Imports the necessary packages for the app to run
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';

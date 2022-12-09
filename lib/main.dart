@@ -6,7 +6,6 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/CurrentUser.dart';
-import 'package:idk_what_to_eat_test/currentRestaurant.dart';
 import 'package:idk_what_to_eat_test/signInScreenUI.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

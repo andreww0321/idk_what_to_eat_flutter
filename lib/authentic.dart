@@ -1,8 +1,10 @@
-// this file authenticates that the user has an account with our app
+/*  Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+    Description: This file authenticates that the user has an account with our app
+*/
 
+// Imports the necessary packages for the app to run
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:idk_what_to_eat_test/myUser.dart';
-import 'package:idk_what_to_eat_test/signInScreenUI.dart';
 import 'package:idk_what_to_eat_test/signUpScreenUI.dart';
 
 class AuthService {

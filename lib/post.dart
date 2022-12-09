@@ -1,4 +1,7 @@
-// this file creates post objects
+//Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+//Description: This file creates post objects
+
+// Imports the necessary packages for the app to run
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,7 @@
-// this page displays all the posts from all users
+//Names: Kenzie Kisthardt, Ellen Maguire, Batool Salloum, and Andrew White
+//Description: This page displays all the posts from all users
 
+// Imports the necessary packages for the app to run
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/post.dart';

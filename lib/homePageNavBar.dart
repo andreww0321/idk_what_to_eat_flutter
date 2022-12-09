@@ -2,7 +2,6 @@
 //Description: Creates what the bottom navigation bar looks like
 
 // Imports the necessary packages for the app to run
-
 import 'package:flutter/material.dart';
 import 'package:idk_what_to_eat_test/cravingsScreen.dart';
 import 'package:idk_what_to_eat_test/profile.dart';

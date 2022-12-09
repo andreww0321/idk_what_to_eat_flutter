@@ -2,8 +2,7 @@
     Description: Creates what the cravings screen will look like. Shows what the
     user can filter restaurants with in a check-list format
 */
-
-
+// Imports the necessary packages for the app to run
 import 'dart:core';
 import 'package:flutter/material.dart';
 
