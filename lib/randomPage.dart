@@ -25,7 +25,7 @@ class _randomPageState extends State<randomPage> {
 
     FirebaseFirestore.instance.collection('restaurants').get().then((value) =>
     {value.docs.forEach((result) {
-        resultsArray.add(result.get('name') as String);
+        resultsArray.add((result.get('name') as String) + ("\n\nADDRESS:\n") + (result.get('address') as String)+ ("\n\nCATEGORIES:\n") + (result.get('categories') as String) + ("\n\nSTARS:\n") + (result.get('stars').toString()));
         // if (i == randInt) {
         //   randomRes = result.get('name') as String;
         //   //resultsArray.add(result.toString());
@@ -191,7 +191,7 @@ class _randomResultsState extends State<randomResults> {
     String text = "";
     if (widget.restaurant.length>0) {
       var randInt = Random().nextInt(widget.restaurant.length);
-       text = ("Restaurant Name: \n" +widget.restaurant.elementAt(randInt));
+       text = ("RESTAURANT NAME: \n" +widget.restaurant.elementAt(randInt));
     }
     else{
       text = "Loading...";
@@ -211,9 +211,8 @@ class _randomResultsState extends State<randomResults> {
                     Padding(
                         padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child:Text(text,
-                            textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 40,
+                              fontSize: 30,
                             )
                         )
 
